@@ -1,4 +1,5 @@
 /**
+ * 
  * QuickSort Java implementation according to "Introduction to Algorithms" Chapter 7
  * 
  * @author Quincy
@@ -15,7 +16,7 @@ public class QuickSort
 
 	public void sort()
 	{
-		System.out.println("Sort:" + printArray(nArrayToSort) + ", nPivotPos=0, nEndPos=" + (nArrayToSort.length - 1));
+		System.out.println("Sort:" + Utility.printArray(nArrayToSort) + ", nPivotPos=0, nEndPos=" + (nArrayToSort.length - 1));
 		sort(nArrayToSort, 0, nArrayToSort.length - 1);
 	}
 
@@ -24,9 +25,9 @@ public class QuickSort
 		if (nPivotPos < nEndPos)
 		{
 			int nMiddleIndex = partition(nSubArray, nPivotPos, nEndPos);
-			System.out.println("Sort left part:" + printArray(nSubArray) + ", nPivotPos=" + nPivotPos + ", nMiddleIndex=" + nMiddleIndex);
+			System.out.println("Sort left part:" + Utility.printArray(nSubArray) + ", nPivotPos=" + nPivotPos + ", nMiddleIndex=" + nMiddleIndex);
 			sort(nSubArray, nPivotPos, nMiddleIndex - 1);
-			System.out.println("Sort right part:" + printArray(nSubArray) + ", nMiddleIndex=" + nMiddleIndex + ", nEndPos=" + nEndPos);
+			System.out.println("Sort right part:" + Utility.printArray(nSubArray) + ", nMiddleIndex=" + nMiddleIndex + ", nEndPos=" + nEndPos);
 			sort(nSubArray, nMiddleIndex + 1, nEndPos);
 		}
 	}
@@ -52,7 +53,7 @@ public class QuickSort
 		// Last, swap [current pivot's value] with [next pivot's value]
 		nNextPivot = nNextPivot + 1;
 		swap(nSubArray, nNextPivot, nPivotPos);
-		System.out.println("Partitioning:" + printArray(nSubArray) + ", nPivotValue=" + nPivotValue + " (" + nPivotPos + "), nStartPos=" + nStartPos + ", nNextPivot=" + nNextPivot);
+		System.out.println("Partitioning:" + Utility.printArray(nSubArray) + ", nPivotValue=" + nPivotValue + " (" + nPivotPos + "), nStartPos=" + nStartPos + ", nNextPivot=" + nNextPivot);
 		return nNextPivot;
 	}
 
@@ -65,17 +66,6 @@ public class QuickSort
 			nSubArray[nTarget] = nSubArray[nNextPivot];
 			nSubArray[nNextPivot] = nTmp;
 		}
-	}
-
-	private String printArray(int[] nSubArray)
-	{
-		StringBuffer sb = new StringBuffer("[ ");
-		for (int nEle : nSubArray)
-		{
-			sb.append(nEle + " ");
-		}
-		sb.append("]");
-		return sb.toString();
 	}
 
 	public static void main(String[] strArg)
